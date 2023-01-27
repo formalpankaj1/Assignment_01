@@ -1,0 +1,26 @@
+.specificuserinfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    border: 1px solid black;
+    border-radius: 1rem;
+    width: 24rem;
+}
+.specificuserinfo > p{
+    font-size: 1.6rem;
+    margin-left: 1rem;
+}
+.followersuserinfo{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    border: 1px solid black;
+    border-radius: 1rem;
+    width: 24rem;
+    max-width: 24rem;
+}
+.followersuserinfo > p{
+    font-size: 1.4rem;
+    margin-left: 1rem;
+}

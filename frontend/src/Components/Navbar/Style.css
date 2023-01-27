@@ -1,0 +1,46 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    background-color: aliceblue;
+}
+.nav_heading > h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    margin-left: .2rem;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: orange;
+}
+.nav_ul{
+    display: flex;
+}
+.nav_ul > ul{
+    display: flex;
+    padding: 0;
+}
+li{
+    list-style-type: none;
+}
+li a{
+    text-decoration: none;
+    margin-right: 1rem;
+    font-size: 1.3rem;
+}
+li>p{
+    margin: 0;
+    font-size: 1.3rem;
+}
+li>p:hover{
+    color: orange;
+    cursor: pointer;
+}
+.nav_username{
+    display: flex;
+}

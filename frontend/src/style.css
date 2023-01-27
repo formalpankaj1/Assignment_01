@@ -1,0 +1,27 @@
+.App{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    /* width: 98%; */
+}
+body{
+    margin: 0;
+}
+button{
+    cursor: pointer;
+}
+input,
+button{
+    font: 1rem helvetica;
+    padding: 0.5rem;
+    border: 0.1rem #808080 solid;
+    border-radius: 0.5rem;
+}
+input:hover,
+button:hover{
+    border: 0.1rem #404040 solid;
+}
+button.primary{
+    background-color: #f0c040;
+}
