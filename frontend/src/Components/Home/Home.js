@@ -17,7 +17,7 @@ const Home = () => {
   const getInfoHandle = async () => {
     const name = document.getElementById('name').value;
     const data = await getSpecificUserInapi(name);
-    console.log("getSpecificUser", data[0]);
+    // console.log("getSpecificUser", data[0]);
     setUserInfo(data[0])
   }
 

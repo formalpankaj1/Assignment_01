@@ -49,7 +49,7 @@ export function register(formdata, router) {
     return async function registerThunk(dispatch, getState) {
         try {
             const data = await api.registerInapi(formdata);
-            console.log("register", data);
+            // console.log("register", data);
 
             dispatch(auth_addUserToLocalstorage(data));
             router('/');
