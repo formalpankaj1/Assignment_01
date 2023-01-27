@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded());
 app.use(cors());
 
-app.use('/api/users', userRouter);
+app.use('/users', userRouter);
 // const CONNECTION_URL = 'mongodb://localhost:27017/memories';process.env.CONNECTION_URL
 
 const PORT = config.PORT || 9000;
