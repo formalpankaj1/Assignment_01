@@ -38,7 +38,7 @@ export const signIn = async ({ email, password }) => {
         const response = await axios({
             url: `${apiUrl}/users/login`,
             method: 'POST',
-            header: {
+            headers: {
                 'Content-Type': 'application/json',
             },
             data: {
@@ -46,7 +46,7 @@ export const signIn = async ({ email, password }) => {
                 password,
             },
         });
-        // console.log(response);
+        // console.log("response",response);
         if (response.status >= 200 && response.status <= 300) {
             return response.data;
         } else {
@@ -54,7 +54,7 @@ export const signIn = async ({ email, password }) => {
         }
 
     } catch (err) {
-        console.log(err);
+        console.log("err is",err);
         return { error: err.response.data.message || err.message };
     }
 }
@@ -65,7 +65,7 @@ export const getSpecificUserInapi = async (username) => {
         const response = await axios({
             url: `${apiUrl}/users/${username}`,
             method: 'GET',
-            header: {
+            headers: {
                 'Content-Type': 'application/json',
             }
         });
@@ -88,7 +88,7 @@ export const getFollowersInapi = async (username) => {
         const response = await axios({
             url: `${apiUrl}/users/${username}/followers`,
             method: 'GET',
-            header: {
+            headers: {
                 'Content-Type': 'application/json',
             }
         });
@@ -111,7 +111,7 @@ export const getFollowingsInapi = async (username) => {
         const response = await axios({
             url: `${apiUrl}/users/${username}/following`,
             method: 'GET',
-            header: {
+            headers: {
                 'Content-Type': 'application/json',
             }
         });

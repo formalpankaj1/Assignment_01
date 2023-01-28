@@ -10,22 +10,25 @@ userRouter.post('/login', async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    const signinUser = await User.findOne({ email: email });
+    // console.log("email,password: ", email, password);
+    const signinUser = await User.find({ email: email });
 
     // res.send(signinUser);
+    // console.log("signinUser", signinUser);
 
-    if (!signinUser) {
+    if (!signinUser[0]) {
         res.status(401).send({
             message: 'Invalid Email or Password',
         });
     } else {
-        const isMatch = await bcrypt.compare(password, signinUser.password);
+        const isMatch = await bcrypt.compare(password, signinUser[0].password);
+        // console.log("matched:", isMatch);
         if (isMatch) {
             res.send({
-                _id: signinUser._id,
-                name: signinUser.name,
-                email: signinUser.email,
-                token: generateToken(signinUser),
+                _id: signinUser[0]._id,
+                name: signinUser[0].name,
+                email: signinUser[0].email,
+                token: generateToken(signinUser[0]),
             });
         } else {
             res.status(401).send({
@@ -49,7 +52,7 @@ userRouter.post('/register', async (req, res) => {
     //hashing of passsword:
 
     const createdUser = await user.save();
-
+    // console.log("createdUser", createdUser);
     if (!createdUser) {
         res.status(401).send({
             message: 'Invalid user Data',
@@ -124,7 +127,7 @@ userRouter.delete('/:username/follow', isAuth, async (req, res) => {
         const user2 = await User.find({ name: usertounfollow });
 
         const x = user[0].following.find((x) => x == usertounfollow);
- 
+
         if (x) {
             //change the followings: 
             user[0].following = user[0].following.filter((x) => x != usertounfollow);
