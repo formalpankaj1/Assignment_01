@@ -33,7 +33,12 @@ const Home = () => {
     const name = document.getElementById('name_getfollowings').value;
     const followings = await getFollowingsInapi(name);
     document.getElementById('name_getfollowings').value = '';
-    setFollowings(followings);
+    if (Array.isArray(followings)) {
+      setFollowings(followings);
+    } else {
+      alert(followings);
+    }
+
   }
 
   const Follow = async () => {

@@ -38,7 +38,7 @@ app.get('*', (req, res) => {
 // ===============================================================//
 
 
-mongoose.set("strictQuery", false);
+// mongoose.set("strictQuery", false);
 mongoose.connect(config.MONGODB_URL)
     .then(() => {
         console.log('connected to mongodb');

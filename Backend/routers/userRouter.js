@@ -41,11 +41,11 @@ userRouter.post('/login', async (req, res) => {
 
 userRouter.post('/register', async (req, res) => {
 
-
+    const hashedPassword = await bcrypt.hash(req.body.password, 12);
     const user = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password,
+        password: hashedPassword,
     })
 
     // res.send(signinUser);
@@ -80,8 +80,12 @@ userRouter.get('/:username/followers', async (req, res) => {
 
 userRouter.get('/:username/following', async (req, res) => {
     const user = await User.find({ name: req.params.username });
-    // console.log(user);
-    res.send(user[0].following);
+    // console.log("user",user);
+    if (user.length == 0) {
+        res.send('user not exist');
+    } else {
+        res.send(user[0].following);
+    }
 })
 
 userRouter.post('/:username/follow', isAuth, async (req, res) => {
@@ -95,7 +99,11 @@ userRouter.post('/:username/follow', isAuth, async (req, res) => {
 
         const x = user[0].following.find((x) => x == usertofollow);
 
-        if (!x) {
+        if (user2.length == 0) {
+            res.send('user not exist');
+        } else if (usertofollow == userwantstofollow) {
+            res.send('user you cannot follow yourself');
+        } else if (!x && user2.length != 0) {
             //change the followings: 
             user[0].following = [...user[0].following, usertofollow];
             const Updateuser = new User(user[0]);
