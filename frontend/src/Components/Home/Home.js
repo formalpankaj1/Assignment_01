@@ -17,6 +17,7 @@ const Home = () => {
   const getInfoHandle = async () => {
     const name = document.getElementById('name').value;
     const data = await getSpecificUserInapi(name);
+    document.getElementById('name').value = '';
     // console.log("getSpecificUser", data[0]);
     setUserInfo(data[0])
   }
@@ -24,12 +25,14 @@ const Home = () => {
   const getFollowers = async () => {
     const name = document.getElementById('name_getfollowers').value;
     const followers = await getFollowersInapi(name);
+    document.getElementById('name_getfollowers').value = '';
     setFollowers(followers);
   }
 
   const getFollowings = async () => {
     const name = document.getElementById('name_getfollowings').value;
     const followings = await getFollowingsInapi(name);
+    document.getElementById('name_getfollowings').value = '';
     setFollowings(followings);
   }
 
@@ -50,7 +53,9 @@ const Home = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
       <div className='container'>
-        <h1>Home</h1>
+        <h1>Test API's Here</h1>
+        <p style={{ color: 'red' }}>*NOTE: "For Testing API's you can register and login "</p>
+        <b style={{ color: 'red' }}>"Or Else you can also use UserNames: 'pankaj', 'saurabh','abc' For test API'S only"</b>
         <div >
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div style={{ margin: '1rem' }}>
